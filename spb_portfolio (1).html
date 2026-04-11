@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPB Case Competition — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --navy-light: #253355;
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --cream: #F9F6F0;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --red: #C0392B;
+    --green: #16A34A;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── hero ── */
+  .hero {
+    background: var(--navy);
+    color: white;
+    padding: 80px 5% 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--gold);
+  }
+  .hero::after {
+    content: 'SPB';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 220px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 700;
+    line-height: 1.15;
+    max-width: 700px;
+    margin-bottom: 20px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .hero-meta-item { }
+  .hero-meta-item .label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 4px;
+  }
+  .hero-meta-item .value {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  /* ── panel note ── */
+  .panel-note {
+    background: linear-gradient(135deg, #fff9ee, #fff3d6);
+    border-left: 4px solid var(--gold);
+    padding: 28px 32px;
+    margin: 0 5% 0;
+    position: relative;
+    top: -1px;
+    border-radius: 0 0 8px 8px;
+  }
+  .panel-note .quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    color: var(--gold);
+    line-height: 0;
+    vertical-align: -22px;
+    margin-right: 6px;
+    opacity: 0.5;
+  }
+  .panel-note p {
+    font-size: 15px;
+    color: #5a4a1a;
+    font-style: italic;
+    line-height: 1.7;
+  }
+  .panel-note .attribution {
+    font-size: 12px;
+    color: #9a8040;
+    margin-top: 10px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── main layout ── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 64px 5%;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 40px;
+    line-height: 1.2;
+  }
+
+  /* ── problem section ── */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #e5e0d8;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+  .problem-card {
+    background: white;
+    padding: 28px 24px;
+  }
+  .problem-card .number {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .problem-card .number.danger { color: var(--red); }
+  .problem-card .number.warn   { color: #B45309; }
+  .problem-card .sub {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .problem-card p {
+    font-size: 13px;
+    color: #4b5563;
+    line-height: 1.55;
+  }
+
+  .crisis-box {
+    background: var(--navy);
+    color: white;
+    border-radius: 12px;
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  .crisis-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--gold-light);
+  }
+  .crisis-box p {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+  .crisis-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .crisis-stat {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 8px;
+    border-left: 3px solid var(--gold);
+  }
+  .crisis-stat .big {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    min-width: 110px;
+  }
+  .crisis-stat .desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.4;
+  }
+
+  /* ── solution section ── */
+  .solution-bg {
+    background: var(--navy);
+    padding: 64px 5%;
+  }
+  .solution-bg .section-label { color: var(--gold); }
+  .solution-bg .section-title { color: white; }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .pillar {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 24px;
+    transition: background 0.2s;
+  }
+  .pillar:hover { background: rgba(255,255,255,0.08); }
+  .pillar-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .pillar-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .p1 { background: rgba(192,57,43,0.3); color: #f87171; }
+  .p2 { background: rgba(37,99,235,0.3); color: #93c5fd; }
+  .p3 { background: rgba(27,42,74,0.6); border: 1px solid rgba(255,255,255,0.15); color: #c7d2fe; }
+  .p4 { background: rgba(22,163,74,0.3); color: #86efac; }
+
+  .pillar h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+  }
+  .pillar .sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  .pillar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .pillar ul li {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.6);
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.45;
+  }
+  .pillar ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 11px;
+  }
+
+  /* ── financial model section ── */
+  .model-section { padding: 64px 5%; background: var(--cream); }
+
+  .model-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .kpi {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    border-top: 3px solid var(--navy);
+  }
+  .kpi .big {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .kpi .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; }
+  .kpi .delta { font-size: 12px; font-weight: 600; color: var(--green); }
+  .kpi .delta.warn { color: var(--red); }
+
+  .model-table-wrap {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 32px;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead tr { background: var(--navy); }
+  thead th {
+    color: white; font-weight: 500; padding: 12px 14px;
+    text-align: center; font-size: 11px; letter-spacing: 0.05em;
+  }
+  thead th:first-child { text-align: left; }
+  tbody tr:nth-child(even) { background: #f9fafb; }
+  tbody tr:last-child { background: var(--navy); }
+  tbody tr:last-child td { color: white; font-weight: 600; }
+  td { padding: 11px 14px; border-bottom: 1px solid #f3f4f6; color: #374151; }
+  td:first-child { font-weight: 500; color: var(--navy); }
+  td:not(:first-child) { text-align: center; }
+  .cell-crisis { background: #FEF9EC !important; color: #92400E !important; font-weight: 600 !important; }
+  .cell-good { color: var(--green) !important; font-weight: 600 !important; }
+  .cell-bad { color: var(--red) !important; font-weight: 600 !important; }
+  .cagr-col { background: var(--navy-light) !important; color: var(--gold-light) !important; font-weight: 700 !important; }
+
+  .model-drivers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .driver {
+    background: white;
+    border-radius: 10px;
+    padding: 18px;
+    border: 1px solid #e5e7eb;
+  }
+  .driver .driver-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--gold);
+    display: inline-block;
+  }
+  .driver p { font-size: 12px; color: #6b7280; line-height: 1.55; }
+
+  /* ── risk section ── */
+  .risk-section {
+    background: #f1f0ec;
+    padding: 64px 5%;
+  }
+  .risk-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .risk-col h4 {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 10px 14px;
+    border-radius: 6px 6px 0 0;
+    margin-bottom: 0;
+  }
+  .risk-col.reg h4  { background: var(--red);        color: white; }
+  .risk-col.comp h4 { background: var(--navy);       color: white; }
+  .risk-col.ops h4  { background: #1D4ED8;            color: white; }
+  .risk-item {
+    background: white;
+    padding: 16px;
+    border-bottom: 1px solid #f3f4f6;
+    border-left: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+  }
+  .risk-item:last-child { border-radius: 0 0 6px 6px; border-bottom: 1px solid #e5e7eb; }
+  .risk-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    gap: 8px;
+  }
+  .risk-item h5 { font-size: 13px; font-weight: 600; color: var(--navy); line-height: 1.3; }
+  .badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 3px 8px; border-radius: 20px; white-space: nowrap;
+  }
+  .badge.high { background: #FEE2E2; color: #991B1B; }
+  .badge.med  { background: #FEF3C7; color: #92400E; }
+  .badge.low  { background: #D1FAE5; color: #065F46; }
+  .risk-item p { font-size: 11.5px; color: #6b7280; line-height: 1.5; }
+
+  /* ── reflection ── */
+  .reflection {
+    background: var(--navy);
+    padding: 64px 5%;
+    text-align: center;
+  }
+  .reflection .section-label { color: var(--gold); margin-bottom: 12px; display: block; }
+  .reflection h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 32px);
+    color: white;
+    max-width: 680px;
+    margin: 0 auto 24px;
+    line-height: 1.3;
+  }
+  .reflection p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    max-width: 620px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+  .lessons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .lesson {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .lesson .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .lesson h5 { font-size: 13px; color: white; font-weight: 600; margin-bottom: 6px; }
+  .lesson p  { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+  /* ── team ── */
+  .team-section { padding: 48px 5%; background: var(--cream); }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+  .team-card {
+    background: white;
+    border-radius: 10px;
+    padding: 18px 14px;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+  }
+  .team-card .avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 10px;
+    font-family: 'Playfair Display', serif;
+  }
+  .team-card h5 { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .team-card .role { font-size: 11px; color: var(--muted); }
+  .team-card .you {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 9px;
+    background: var(--gold);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 768px) {
+    .problem-grid, .model-kpis, .model-drivers, .risk-grid, .lessons, .team-grid { grid-template-columns: 1fr; }
+    .pillars, .crisis-box { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-tag">Case Competition · Simon Business School · April 2026</div>
+  <h1>Redefining Wealth Management<br>for the <em>Next Generation</em></h1>
+  <p style="color:rgba(255,255,255,0.6);font-size:15px;max-width:560px;margin-top:16px;">
+    A 5-year growth and transformation strategy for Simon Private Bank — a top-tier global private wealth manager facing a generational shift, a margin crisis, and an immediate talent departure.
+  </p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><div class="label">Role</div><div class="value">5-Year Financial Model</div></div>
+    <div class="hero-meta-item"><div class="label">Team</div><div class="value">Manaswini · Saeed · Christo · Aditya · Kartik</div></div>
+    <div class="hero-meta-item"><div class="label">Deliverable</div><div class="value">Financial projections · Scenario analysis · Assumptions model</div></div>
+    <div class="hero-meta-item"><div class="label">Outcome</div><div class="value">Competed · Panel feedback received</div></div>
+  </div>
+</section>
+
+<!-- ── PANEL NOTE ── -->
+<div class="panel-note">
+  <p><span class="quote-mark">"</span>Strong ideas and rigorous analysis — the financial thinking was sound. The opportunity was in translating complex models into the clear, simple narrative that C-suite audiences expect from consultants."</p>
+  <div class="attribution">— Panel Feedback · Simon Financial Industry Case Competition 2026</div>
+</div>
+
+<!-- ── THE PROBLEM ── -->
+<div class="container">
+  <div class="section-label">The Problem</div>
+  <div class="section-title">SPB faced three simultaneous threats</div>
+
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="number danger">28.4%</div>
+      <div class="sub">Operating Margin · FY25</div>
+      <p>Below the 30% floor. Revenue growing but costs outpacing it — a structural margin problem hiding in plain sight before the crisis hit.</p>
+    </div>
+    <div class="problem-card">
+      <div class="number warn">10.8%</div>
+      <div class="sub">Millennials in client base</div>
+      <p>54% of clients are Boomers. The $84T intergenerational wealth transfer is underway and SPB has almost no next-gen relationships built.</p>
+    </div>
+    <div class="problem-card">
+      <div class="number">25%</div>
+      <div class="sub">AUM managed by departed SVPs</div>
+      <p>Two Senior VPs left to launch a competing boutique. $577.5B under management. Clients prepared to move within the month.</p>
+    </div>
+  </div>
+
+  <div class="crisis-box">
+    <div>
+      <h3>The Immediate Crisis</h3>
+      <p>The VP departure exposed a structural flaw — client relationships were tied to individuals, not the institution. $12.7–17.7B in AUM was at direct solicitation risk within 30 days, with 93% of all revenue concentrated in just 1,494 UHNW clients.</p>
+    </div>
+    <div class="crisis-stats">
+      <div class="crisis-stat">
+        <div class="big">$12.7–17.7B</div>
+        <div class="desc">AUM at direct solicitation risk<br>from sample-based calculation</div>
+      </div>
+      <div class="crisis-stat">
+        <div class="big">93%</div>
+        <div class="desc">Revenue from UHNW clients<br>— extreme concentration risk</div>
+      </div>
+      <div class="crisis-stat">
+        <div class="big">$70–99M</div>
+        <div class="desc">Annual revenue at risk<br>at 126.7 bps effective ROA</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── THE SOLUTION ── -->
+<section class="solution-bg">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label">Our Strategy</div>
+    <div class="section-title">Four pillars. One coherent narrative.</div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-header">
+          <div class="pillar-num p1">I</div>
+          <div>
+            <h4>Defend the Core</h4>
+            <div class="sub">Stability & Retention</div>
+          </div>
+        </div>
+        <ul>
+          <li>C-suite personally calls at-risk UHNW clients within 48 hours</li>
+          <li>Hard cap: no advisor manages more than 15% of firm AUM</li>
+          <li>Deferred equity + Rainmaker bonus to lock top-30 advisors</li>
+          <li>LAS on fixed income collateral — makes clients structurally harder to poach</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="pillar-header">
+          <div class="pillar-num p2">II</div>
+          <div>
+            <h4>Win Next-Gen Clients</h4>
+            <div class="sub">Acquisition & Growth</div>
+          </div>
+        </div>
+        <ul>
+          <li>SPB Digital sub-brand for Millennials/Gen X aged 25–45</li>
+          <li>Three-tier model: Core (UHNW), Select (HNW), Digital ($500K+)</li>
+          <li>Target wealth inheritors of existing UHNW clients first</li>
+          <li>Alternatives access — 183 bps vs 52 bps fixed income</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="pillar-header">
+          <div class="pillar-num p3">III</div>
+          <div>
+            <h4>Evolve the Model</h4>
+            <div class="sub">Products & Pricing</div>
+          </div>
+        </div>
+        <ul>
+          <li>Hybrid fees: AUM base + subscription layer on top</li>
+          <li>Alternatives mix shift: 13% → 20% of AUM by FY30</li>
+          <li>AI advisory copilot — one advisor serves 2–3× more clients</li>
+          <li>Ancillary revenue: LAS, FX, family office services</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="pillar-header">
+          <div class="pillar-num p4">IV</div>
+          <div>
+            <h4>Sustain Profitability</h4>
+            <div class="sub">Efficiency & Margin</div>
+          </div>
+        </div>
+        <ul>
+          <li>30% margin floor restored FY26 — crisis year above target</li>
+          <li>Hiring freeze FY26 only; comp resumes +4.5%/yr from FY27</li>
+          <li>Tech investment +$200M FY26, +$300M FY27 (peak build)</li>
+          <li>Costs grow 22% while revenue grows 79% — operating leverage</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINANCIAL MODEL ── -->
+<section class="model-section">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label">My Deliverable — 5-Year Financial Model</div>
+    <div class="section-title">Stress case: 7% market return · $26.5B crisis loss · FY26–FY30</div>
+
+    <div class="model-kpis">
+      <div class="kpi">
+        <div class="label">AUM by FY30</div>
+        <div class="big">$3.94T</div>
+        <div class="delta">+70% vs FY25</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Revenue FY30</div>
+        <div class="big">$52.4B</div>
+        <div class="delta">+79% vs FY25</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Operating Margin FY30</div>
+        <div class="big">50.9%</div>
+        <div class="delta">vs 28.4% FY25</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Margin Floor FY26</div>
+        <div class="big">32.4%</div>
+        <div class="delta warn">Crisis yr — above 30% floor ✓</div>
+      </div>
+    </div>
+
+    <div class="model-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>FY25A</th>
+            <th>FY26E</th>
+            <th>FY27E</th>
+            <th>FY28E</th>
+            <th>FY29E</th>
+            <th>FY30E</th>
+            <th>5-Yr CAGR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Total AUM ($T)</td>
+            <td>$2.31T</td>
+            <td class="cell-crisis">$2.50T</td>
+            <td>$2.80T</td>
+            <td>$3.14T</td>
+            <td>$3.52T</td>
+            <td>$3.94T</td>
+            <td class="cagr-col">+11.3%</td>
+          </tr>
+          <tr>
+            <td>Revenue ($B)</td>
+            <td>$29.3B</td>
+            <td class="cell-crisis">$31.9B</td>
+            <td class="cell-good">$36.1B</td>
+            <td class="cell-good">$40.8B</td>
+            <td class="cell-good">$46.2B</td>
+            <td class="cell-good">$52.4B</td>
+            <td class="cagr-col">+12.3%</td>
+          </tr>
+          <tr>
+            <td>Operating Costs ($B)</td>
+            <td>$20.9B</td>
+            <td class="cell-crisis">$21.6B</td>
+            <td>$22.8B</td>
+            <td>$23.7B</td>
+            <td>$24.7B</td>
+            <td>$25.7B</td>
+            <td class="cagr-col">+4.2%</td>
+          </tr>
+          <tr>
+            <td>Operating Income ($B)</td>
+            <td>$8.3B</td>
+            <td class="cell-crisis">$10.3B</td>
+            <td class="cell-good">$13.3B</td>
+            <td class="cell-good">$17.1B</td>
+            <td class="cell-good">$21.5B</td>
+            <td class="cell-good">$26.7B</td>
+            <td class="cagr-col">+26.3%</td>
+          </tr>
+          <tr>
+            <td>Operating Margin</td>
+            <td class="cell-bad">28.4%</td>
+            <td class="cell-crisis">32.4%</td>
+            <td class="cell-good">36.9%</td>
+            <td class="cell-good">41.9%</td>
+            <td class="cell-good">46.5%</td>
+            <td class="cell-good">50.9%</td>
+            <td class="cagr-col">✓ ≥30%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="model-drivers">
+      <div class="driver">
+        <div class="driver-title">AUM Growth</div>
+        <p>7% blended market return + 2.5% organic NNM + 2.5% next-gen acquisition. Crisis loss of $26.5B absorbed by $161B+ in market appreciation in FY26 alone.</p>
+      </div>
+      <div class="driver">
+        <div class="driver-title">Revenue Growth</div>
+        <p>Base AUM fees drive 98% of growth. ROA improves from 126.7 → 132 bps as alternatives mix shifts from 13% → 20%. Subscription + LAS diversify from FY27.</p>
+      </div>
+      <div class="driver">
+        <div class="driver-title">Cost Discipline</div>
+        <p>Hiring freeze FY26 only. Comp resumes +4.5%/yr from FY27. Total costs grow 22% over 5 years vs revenue growing 79% — the source of margin expansion.</p>
+      </div>
+      <div class="driver">
+        <div class="driver-title">Scenario Analysis</div>
+        <p>Four scenarios modelled: Conservative (5.5% mkt, $12.7B loss) through Severe (5.5% mkt, $26.5B loss). 30% margin floor holds in every scenario from FY26 onwards.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── RISK ── -->
+<section class="risk-section">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label">Risk Understanding</div>
+    <div class="section-title">Regulatory · Competitive · Operational</div>
+    <div class="risk-grid">
+      <div class="risk-col reg">
+        <h4>Regulatory</h4>
+        <div class="risk-item">
+          <div class="risk-item-header"><h5>Non-Solicitation & Non-Compete</h5><span class="badge high">HIGH</span></div>
+          <p>Engage outside counsel immediately. File injunctions if departed SVPs contact SPB clients. Monitor all client communications.</p>
+        </div>
+        <div class="risk-item">
+          <div class="risk-item-header"><h5>Digital Product Suitability</h5><span class="badge med">MED</span></div>
+          <p>AI advisory must comply with SEC/FINRA fiduciary standards. Annual algorithm audit required. Robust KYC/AML for digital onboarding.</p>
+        </div>
+        <div class="risk-item">
+          <div class="risk-item-header"><h5>Cross-Border Risk (EMEA/APAC)</h5><span class="badge med">MED</span></div>
+          <p>Local counsel review before digital platform launch per jurisdiction. Separate data residency architecture for GDPR compliance.</p>
+        </div>
+      </div>
+      <div class="risk-col comp">
+        <h4>Competitive</h4>
+        <div class="risk-item">
+          <div class="risk-item-header"><h5>Boutique Firm Poaching</h5><span class="badge high">HIGH</span></div>
+          <p>Differentiate on institutional scale and product breadth. Boutiques cannot replicate SPB's alternatives shelf or global reach.</p>
+        </div>
+        <div class="risk-item">
+          <div class="risk-item-header"><h5>FinTech & RIA Disruption</h5><span class="badge med">MED</span></div>
+          <p>SPB Digital sub-brand captures digital-native clients. Strategic partnership with WealthTech (Addepar, Orion) accelerates build.</p>
+        </div>
+        <div class="risk-item">
+          <div class="risk-item-header"><h5>Fee Compression Industry-Wide</h5><span class="badge med">MED</span></div>
+          <p>Subscription tier and alternatives fees structurally protect margin from AUM fee compression. Revenue diversification is the hedge.</p>
+        </div>
+      </div>
+      <div class="risk-col ops">
+        <h4>Operational</h4>
+        <div class="risk-item">
+          <div class="risk-item-header"><h5>Advisor Concentration Risk</h5><span class="badge high">HIGH</span></div>
+          <p>Hard cap: no advisor manages more than 15% of firm AUM. Team-based coverage. Succession plan for every advisor with $500M+ book.</p>
+        </div>
+        <div class="risk-item">
+          <div class="risk-item-header"><h5>Technology Execution Risk</h5><span class="badge med">MED</span></div>
+          <p>Phased platform build with MVP in 90 days. Fallback: partner with Envestnet or SEI if build delays emerge. Dedicated CTO-led squad.</p>
+        </div>
+        <div class="risk-item">
+          <div class="risk-item-header"><h5>Brand Dilution</h5><span class="badge low">LOW</span></div>
+          <p>SPB Digital is a distinct sub-brand with no co-branding with core SPB. Clear firewall. Core UHNW brand untouched.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── REFLECTION ── -->
+<section class="reflection">
+  <span class="section-label">What I Learned</span>
+  <h2>The ideas were right. The delivery needed work.</h2>
+  <p>The panel noted our analysis was rigorous and our strategy was well-reasoned — but that we needed to translate it more simply for a C-suite audience. That's the lesson I'm carrying forward.</p>
+  <div class="lessons">
+    <div class="lesson">
+      <div class="num">01</div>
+      <h5>Simplify before you present</h5>
+      <p>A financial model with four scenarios and 6 sections is thorough. A C-suite audience needs one number, one chart, one takeaway. Lead with the answer.</p>
+    </div>
+    <div class="lesson">
+      <div class="num">02</div>
+      <h5>Consultants frame, not just analyze</h5>
+      <p>The insight isn't the model — it's the story the model tells. "30% margin floor is never breached again after FY25" is a story. A table of numbers is not.</p>
+    </div>
+    <div class="lesson">
+      <div class="num">03</div>
+      <h5>Defend your assumptions cold</h5>
+      <p>Every number has a source. Every assumption has a rationale. Being able to explain the methodology under pressure — that's what separates good analysis from great consulting.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── OUR STRATEGIC THINKING ── -->
+<section class="team-section" style="padding: 64px 5%;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label" style="color:var(--gold)">Our Strategic Thinking</div>
+    <div style="font-family:'Playfair Display',serif;font-size:clamp(22px, 3vw, 32px);font-weight:700;color:var(--navy);margin-bottom:16px;line-height:1.3;">The crisis wasn't existential — but it exposed what could become one.</div>
+    <p style="font-size:15px;color:#6b7280;line-height:1.75;max-width:800px;margin-bottom:36px;">
+      Our core thesis was that the SVP departure, while painful, was not a terminal event for SPB. The bank's fundamentals — $2.31T in AUM, deep UHNW relationships, and a globally recognized brand — were intact. The real danger wasn't the immediate crisis. It was the possibility of arriving at a similar situation again: concentrated client relationships, advisor dependency, and a business model that hadn't evolved for the next generation of wealth.
+    </p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div style="background:white;border-radius:10px;padding:24px;border:1px solid #e5e7eb;">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);font-weight:700;margin-bottom:8px;">01</div>
+        <h5 style="font-size:14px;font-weight:600;color:var(--navy);margin-bottom:8px;">Stabilize first, then transform</h5>
+        <p style="font-size:13px;color:#6b7280;line-height:1.6;">We separated the 30-day crisis response from the 5-year structural fix. Retain at-risk clients immediately, then rebuild the model so no single advisor departure can threaten the firm again.</p>
+      </div>
+      <div style="background:white;border-radius:10px;padding:24px;border:1px solid #e5e7eb;">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);font-weight:700;margin-bottom:8px;">02</div>
+        <h5 style="font-size:14px;font-weight:600;color:var(--navy);margin-bottom:8px;">The margin problem was structural, not cyclical</h5>
+        <p style="font-size:13px;color:#6b7280;line-height:1.6;">28.4% operating margin below the 30% floor wasn't caused by the crisis — it existed before it. Costs were outpacing revenue growth. The solution had to address cost discipline and revenue diversification simultaneously.</p>
+      </div>
+      <div style="background:white;border-radius:10px;padding:24px;border:1px solid #e5e7eb;">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);font-weight:700;margin-bottom:8px;">03</div>
+        <h5 style="font-size:14px;font-weight:600;color:var(--navy);margin-bottom:8px;">Next-gen is the growth engine, not a side project</h5>
+        <p style="font-size:13px;color:#6b7280;line-height:1.6;">With 54% of clients being Boomers and the $84T wealth transfer underway, SPB needed a digital-first strategy for Millennials and Gen X — not as a defensive move, but as the primary growth driver for the next decade.</p>
+      </div>
+      <div style="background:white;border-radius:10px;padding:24px;border:1px solid #e5e7eb;">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);font-weight:700;margin-bottom:8px;">04</div>
+        <h5 style="font-size:14px;font-weight:600;color:var(--navy);margin-bottom:8px;">Never arrive at this situation again</h5>
+        <p style="font-size:13px;color:#6b7280;line-height:1.6;">Hard caps on advisor AUM concentration, team-based coverage models, and institutional stickiness through lending and alternatives access — all designed to make the firm resilient to individual departures permanently.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BACK TO PORTFOLIO ── -->
+<section style="background:var(--cream);padding:32px 5%;text-align:center;">
+  <a href="index.html" style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--navy);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;padding:12px 32px;border:1px solid var(--navy);border-radius:4px;transition:all 0.3s;display:inline-block;">← Back to Portfolio</a>
+</section>
+
+</body>
+</html>
