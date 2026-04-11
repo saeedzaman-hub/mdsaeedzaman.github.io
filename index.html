@@ -239,6 +239,29 @@
     .status-live { background: rgba(196,164,74,0.15); color: var(--accent-light); }
     .status-wip { background: rgba(245,241,235,0.06); color: rgba(245,241,235,0.35); }
 
+    /* HIGHLIGHTS */
+#highlights { background: var(--cream); padding: 5rem 2rem; }
+.highlights-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  margin-top: 3.5rem;
+}
+.highlight-item {
+  position: relative; overflow: hidden;
+  aspect-ratio: 16/10;
+}
+.highlight-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s;
+}
+.highlight-item:hover img { transform: scale(1.03); }
+.highlight-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 1.5rem; background: linear-gradient(transparent, rgba(26,26,24,0.7));
+  font-size: 0.82rem; color: var(--paper); letter-spacing: 0.04em;
+}
+@media (max-width: 600px) {
+  .highlights-grid { grid-template-columns: 1fr; }
+}
     /* CONTACT */
     #contact { background: var(--cream); padding-bottom: 4rem; }
     .contact-grid {
@@ -589,6 +612,24 @@
   </div>
 </section>
 
+  <!-- HIGHLIGHTS -->
+<section id="highlights">
+  <div class="section-inner reveal">
+    <p class="section-tag">Highlights</p>
+    <h2 class="section-title">Beyond the desk</h2>
+    <div class="highlights-grid">
+      <div class="highlight-item">
+        <img src="case-comp1.jpg" alt="Financial Consulting Case Competition" loading="lazy">
+        <div class="highlight-caption">Financial Consulting Case Comp</div>
+      </div>
+      <div class="highlight-item">
+        <img src="case-comp2.jpg" alt="Financial Consulting Case Competition" loading="lazy">
+        <div class="highlight-caption">Financial Consulting Case Comp</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner reveal">
@@ -609,6 +650,10 @@
           <a href="https://mdsaeedzaman.substack.com" target="_blank" class="contact-link">
             <span class="contact-link-label">Substack</span>
             mdsaeedzaman.substack.com ↗
+            <a href="https://www.linkedin.com/in/mdsaeedzaman" target="_blank" class="contact-link">
+  <span class="contact-link-label">LinkedIn</span>
+  linkedin.com/in/mdsaeedzaman ↗
+</a>
           </a>
           <a href="https://drive.google.com/file/d/1JT-ZzXmWHpP0ETeI71ub2xXRCC9KGXQz/view?usp=drive_link" target="_blank" class="contact-link">
             <span class="contact-link-label">Resume</span>
