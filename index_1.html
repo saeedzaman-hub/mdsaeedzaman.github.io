@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Md Saeed Zaman | Real Estate &amp; Credit</title>
+  <meta name="description" content="Md Saeed Zaman, real estate and credit analyst. 120+ U.S. CRE acquisitions underwritten, 2,000+ mortgage files, and original research on how interest rates reprice REITs and real assets. MS Finance, Simon Business School.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --ink: #1a1a18;
+      --paper: #f5f1eb;
+      --cream: #ece6db;
+      --warm: #d4c9b8;
+      --accent: #8b6914;
+      --accent-light: #c4a44a;
+      --muted: #7a746a;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', -apple-system, sans-serif;
+      --max-w: 1120px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.7;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--accent-light); color: var(--ink); }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(245,241,235,0.85);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(26,26,24,0.06);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.06); }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-logo { font-family: var(--serif); font-size: 1.15rem; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 400; color: var(--muted); text-decoration: none;
+      letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 28px; height: 20px; position: relative;
+    }
+    .hamburger span {
+      display: block; width: 100%; height: 1.5px; background: var(--ink);
+      position: absolute; left: 0; transition: all 0.3s;
+    }
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 9px; }
+    .hamburger span:nth-child(3) { top: 18px; }
+    .hamburger.open span:nth-child(1) { top: 9px; transform: rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+      background: var(--paper); z-index: 99;
+      flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: var(--serif); font-size: 1.8rem; color: var(--ink); text-decoration: none; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 8rem 2rem 4rem; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -20%; right: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(139,105,20,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: var(--max-w); margin: 0 auto; width: 100%; }
+    .hero-tag {
+      font-size: 0.75rem; font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--accent); margin-bottom: 2rem;
+      opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .hero h1 {
+      font-family: var(--serif); font-size: clamp(2.6rem, 6vw, 4.5rem);
+      line-height: 1.12; letter-spacing: -0.02em; color: var(--ink);
+      max-width: 820px; margin-bottom: 2rem;
+      opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-desc {
+      font-size: 1.1rem; color: var(--muted); max-width: 580px;
+      line-height: 1.8; margin-bottom: 3rem;
+      opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+    }
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 2rem; font-family: var(--sans); font-size: 0.82rem;
+      font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;
+      text-decoration: none; border: none; cursor: pointer; transition: all 0.3s;
+    }
+    .btn-primary { background: var(--ink); color: var(--paper); }
+    .btn-primary:hover { background: var(--accent); }
+    .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--warm); }
+    .btn-outline:hover { border-color: var(--ink); }
+    .hero-scroll {
+      position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%);
+      opacity: 0; animation: fadeUp 0.8s 1.2s forwards;
+    }
+    .hero-scroll span {
+      display: block; width: 1px; height: 48px; background: var(--warm);
+      margin: 0 auto; animation: scrollPulse 2s infinite;
+    }
+
+    /* SECTIONS */
+    section { padding: 7rem 2rem; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-tag {
+      font-size: 0.7rem; font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.2em; color: var(--accent); margin-bottom: 1.2rem;
+    }
+    .section-title {
+      font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 1.5rem;
+    }
+    .section-desc { font-size: 1rem; color: var(--muted); max-width: 640px; line-height: 1.8; }
+
+    /* ABOUT */
+    #about { background: var(--cream); }
+    .about-grid {
+      display: grid; grid-template-columns: 320px 1fr; gap: 4.5rem;
+      align-items: start; margin-top: 3.5rem;
+    }
+    .about-portrait { position: relative; }
+    .about-portrait img {
+      width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block;
+      background: var(--warm); border: 1px solid rgba(26,26,24,0.1);
+    }
+    .about-portrait::after {
+      content: ''; position: absolute; inset: 0; z-index: -1;
+      border: 1px solid var(--accent-light); transform: translate(14px, 14px);
+    }
+    .portrait-name { font-family: var(--serif); font-size: 1.1rem; margin-top: 1.3rem; color: var(--ink); }
+    .portrait-role { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-top: 0.35rem; }
+    .about-text p { margin-bottom: 1.4rem; font-size: 0.98rem; color: var(--ink); line-height: 1.85; }
+    .about-text strong { font-weight: 500; color: var(--ink); }
+    .about-details { margin-top: 2.5rem; }
+    .about-detail {
+      display: flex; gap: 1.5rem; padding: 1.2rem 0;
+      border-top: 1px solid rgba(26,26,24,0.08);
+    }
+    .about-detail-label {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--muted); min-width: 100px; padding-top: 0.15rem;
+    }
+    .about-detail-value { font-size: 0.95rem; color: var(--ink); }
+    .skills-wrap { margin-top: 4.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(26,26,24,0.08); }
+    .skills-wrap h3 { font-family: var(--serif); font-size: 1.3rem; margin-bottom: 1.5rem; }
+    .skills-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; }
+    .skill-item {
+      padding: 1.4rem 0; border-top: 1px solid rgba(26,26,24,0.08);
+      display: flex; align-items: baseline; gap: 1rem;
+    }
+    .skill-num { font-family: var(--serif); font-size: 0.85rem; color: var(--accent); min-width: 28px; }
+    .skill-name { font-size: 0.95rem; font-weight: 400; color: var(--ink); }
+
+    /* EXPERIENCE */
+    .timeline { margin-top: 3.5rem; }
+    .timeline-item {
+      display: grid; grid-template-columns: 240px 1fr; gap: 3rem;
+      padding: 2.5rem 0; border-top: 1px solid rgba(26,26,24,0.08);
+    }
+    .timeline-date {
+      font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent);
+    }
+    .timeline-company { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); margin-top: 0.4rem; }
+    .timeline-meta { font-size: 0.74rem; color: var(--muted); margin-top: 0.45rem; line-height: 1.5; }
+    .timeline-content h3 { font-family: var(--serif); font-size: 1.15rem; margin-bottom: 0.8rem; }
+    .timeline-content p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; }
+    .timeline-highlights { margin-top: 0.8rem; font-size: 0.88rem; color: var(--muted); line-height: 1.75; }
+
+    /* FOCUS */
+    .focus-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+      margin-top: 3.5rem; background: rgba(26,26,24,0.06);
+    }
+    .focus-card { background: var(--cream); padding: 3rem 2.5rem; transition: background 0.4s; }
+    .focus-card:hover { background: var(--paper); }
+    .focus-icon { font-family: var(--serif); font-size: 2.2rem; color: var(--accent); margin-bottom: 1.5rem; line-height: 1; }
+    .focus-card h3 { font-family: var(--serif); font-size: 1.15rem; margin-bottom: 1rem; line-height: 1.35; }
+    .focus-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.75; }
+
+    /* PROJECTS */
+    #projects { background: var(--ink); color: var(--paper); }
+    #projects .section-tag { color: var(--accent-light); }
+    #projects .section-desc { color: rgba(245,241,235,0.5); }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2px; margin-top: 3.5rem;
+    }
+    .projects-subhead {
+      grid-column: 1 / -1;
+      font-family: var(--serif); font-size: 1.05rem; color: var(--accent-light);
+      margin: 3.5rem 0 0.25rem; padding-bottom: 0.9rem;
+      border-bottom: 1px solid rgba(245,241,235,0.12); letter-spacing: 0.01em;
+    }
+    .projects-subhead:first-of-type { margin-top: 0; }
+    .projects-subhead .sub-note {
+      display: block; font-family: var(--sans); font-size: 0.74rem; font-weight: 300;
+      color: rgba(245,241,235,0.4); letter-spacing: 0.02em; margin-top: 0.5rem; line-height: 1.6;
+    }
+    .project-card {
+      background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.06);
+      padding: 2.8rem 2.2rem; transition: all 0.4s; display: flex; flex-direction: column;
+    }
+    .project-card.flagship { border-color: rgba(196,164,74,0.28); background: rgba(196,164,74,0.05); }
+    .project-card:hover {
+      background: rgba(245,241,235,0.07); border-color: rgba(196,164,74,0.2);
+    }
+    .project-card.flagship:hover { border-color: rgba(196,164,74,0.45); }
+    .project-category {
+      font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.16em;
+      color: var(--accent-light); margin-bottom: 1.2rem;
+    }
+    .project-card h3 {
+      font-family: var(--serif); font-size: 1.25rem; margin-bottom: 1rem;
+      line-height: 1.35; color: var(--paper);
+    }
+    .project-card p { font-size: 0.88rem; line-height: 1.75; color: rgba(245,241,235,0.5); flex: 1; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .project-tag {
+      font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 0.35rem 0.7rem; border: 1px solid rgba(245,241,235,0.1); color: rgba(245,241,235,0.4);
+    }
+    .project-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+    .project-link {
+      font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 0.45rem 0.9rem; text-decoration: none; transition: all 0.3s;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+    .project-link-substack { background: rgba(196,164,74,0.15); color: var(--accent-light); }
+    .project-link-substack:hover { background: rgba(196,164,74,0.3); }
+    .project-link-drive { background: rgba(245,241,235,0.08); color: rgba(245,241,235,0.5); }
+    .project-link-drive:hover { background: rgba(245,241,235,0.15); color: rgba(245,241,235,0.7); }
+    .project-link-colab { background: rgba(245,241,235,0.08); color: rgba(245,241,235,0.5); }
+    .project-link-colab:hover { background: rgba(245,241,235,0.15); color: rgba(245,241,235,0.7); }
+    .project-status {
+      display: inline-block; font-size: 0.68rem; text-transform: uppercase;
+      letter-spacing: 0.1em; padding: 0.3rem 0.65rem; margin-top: 1.5rem; align-self: flex-start;
+    }
+    .status-live { background: rgba(196,164,74,0.15); color: var(--accent-light); }
+    .status-wip { background: rgba(245,241,235,0.06); color: rgba(245,241,235,0.35); }
+
+    /* CONTACT */
+    #contact { background: var(--cream); padding-bottom: 4rem; }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+      margin-top: 3.5rem; align-items: start;
+    }
+    .contact-text { font-size: 0.98rem; color: var(--muted); line-height: 1.85; margin-bottom: 2rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 1rem; font-size: 0.95rem;
+      color: var(--ink); text-decoration: none; transition: color 0.25s;
+    }
+    .contact-link:hover { color: var(--accent); }
+    .contact-link-label {
+      font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--muted); min-width: 70px;
+    }
+
+    /* FOOTER */
+    footer { padding: 3rem 2rem; border-top: 1px solid rgba(26,26,24,0.06); }
+    .footer-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy { font-size: 0.78rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.25s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scrollPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .skills-list { grid-template-columns: 1fr; }
+      .focus-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      section { padding: 5rem 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 7rem 1.5rem 3rem; }
+      .hero h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Saeed Zaman</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <p class="hero-tag">Real Estate · Credit · Real Assets</p>
+    <h1>I underwrite real estate and credit from the <em>property up</em>, and research how rates reprice real assets.</h1>
+    <p class="hero-desc">I'm Saeed, a real estate and credit analyst finishing an MS in Finance at the Simon Business School. 120+ U.S. CRE acquisitions modeled, 2,000+ mortgage files underwritten, and original regression research on how interest-rate regimes reprice REITs and infrastructure.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">View Projects ↓</a>
+      <a href="https://drive.google.com/file/d/1JT-ZzXmWHpP0ETeI71ub2xXRCC9KGXQz/view?usp=drive_link" target="_blank" class="btn btn-outline">Resume ↗</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span></span></div>
+</section>
+
+<!-- ABOUT + CORE SKILLS -->
+<section id="about">
+  <div class="section-inner reveal">
+    <p class="section-tag">About</p>
+    <h2 class="section-title">Background &amp; what drives me</h2>
+    <div class="about-grid">
+      <div class="about-portrait">
+        <img src="portrait.jpg" alt="Md Saeed Zaman">
+        <div class="portrait-name">Md Saeed Zaman</div>
+        <div class="portrait-role">Real Estate · Credit · Real Assets</div>
+      </div>
+      <div class="about-text">
+        <p>I grew up in Patna, India, where capital was scarce and access was rationed, so I learned to read a balance sheet before I learned to read a market. Before I finished undergrad I co-founded <strong>VHelpp</strong>, a service-marketplace startup we grew across two Indian cities to 100+ onboarded professionals, raised a friends-and-family round for, and sold. I ran the projections and the fundraise. That was my first real lesson in how capital actually moves.</p>
+        <p>Since then I've built my edge in real assets and credit. At <strong>Gallagher &amp; Mohan</strong> I underwrote U.S. commercial real estate from the ground up (DCF models, cap rates, DSCR, and distribution waterfalls) across the lending and PE mandates the firm runs for sponsors, lenders, and REITs. At <strong>Better Mortgage</strong> I underwrote residential credit at scale, sharpening my collateral and default lens, including through the 2025 Los Angeles wildfires. Now, at the <strong>Simon School Venture Fund</strong>, I'm applying that underwriting discipline to live investment decisions.</p>
+        <p>What ties it together: I've seen the same deal from the debt seat, the underwriting seat, and the investment seat. My work stays grounded in cash flows, collateral, and how interest rates move the value of real assets, not prediction.</p>
+        <div class="about-details">
+          <div class="about-detail">
+            <span class="about-detail-label">Location</span>
+            <span class="about-detail-value">Rochester, NY</span>
+          </div>
+          <div class="about-detail">
+            <span class="about-detail-label">Education</span>
+            <span class="about-detail-value">MS Finance (STEM) · Simon Business School · Dec 2026</span>
+          </div>
+          <div class="about-detail">
+            <span class="about-detail-label">Credentials</span>
+            <span class="about-detail-value">CFA Level I Candidate · 3.68 GPA · Dean's List</span>
+          </div>
+          <div class="about-detail">
+            <span class="about-detail-label">Focus</span>
+            <span class="about-detail-value">Real Estate · Credit · Real Assets</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="skills-wrap">
+      <h3>Core Skills</h3>
+      <div class="skills-list">
+        <div class="skill-item"><span class="skill-num">01</span><span class="skill-name">Real Estate Underwriting &amp; Modeling (NOI, Cap Rate, DSCR, IRR)</span></div>
+        <div class="skill-item"><span class="skill-num">02</span><span class="skill-name">Credit &amp; Collateral Risk Analysis</span></div>
+        <div class="skill-item"><span class="skill-num">03</span><span class="skill-name">Distribution Waterfalls &amp; Return Analysis</span></div>
+        <div class="skill-item"><span class="skill-num">04</span><span class="skill-name">DCF, LBO &amp; 3-Statement Modeling</span></div>
+        <div class="skill-item"><span class="skill-num">05</span><span class="skill-name">Rate Research &amp; Quantitative Methods (Python)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner reveal">
+    <p class="section-tag">Experience</p>
+    <h2 class="section-title">Where I've built my edge</h2>
+    <p class="section-desc">Private real-asset underwriting, residential credit, and live investing. Each seat sharpens how I read cash flows, collateral, and risk.</p>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-date">Oct 2025 – Present</div>
+          <div class="timeline-company">Simon School Venture Fund</div>
+          <div class="timeline-meta">Rochester, NY · $2M student-managed fund</div>
+        </div>
+        <div class="timeline-content">
+          <h3>Due Diligence Analyst</h3>
+          <p>Led diligence on two early-stage companies, including a renewable-energy venture, running market sizing, competitive analysis, and multi-scenario models to pressure-test each thesis and surface the key risks for the team.</p>
+          <p class="timeline-highlights">Presented findings to the fund's investment board, issuing a no-go recommendation on one opportunity and a conditional recommendation on the other, weighed on valuation, market timing, and risk-adjusted return.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-date">Jun 2024 – Jul 2025</div>
+          <div class="timeline-company">Better Mortgage</div>
+          <div class="timeline-meta">New York, NY · Underwriting Services</div>
+        </div>
+        <div class="timeline-content">
+          <h3>Analyst, Underwriting Services</h3>
+          <p>Personally underwrote 2,000+ residential mortgage files ($250M+ in aggregate), evaluating borrower income, assets, and credit risk against Fannie Mae guidelines across jumbo, non-conforming, and cash-out refinance profiles.</p>
+          <p class="timeline-highlights">Underwrote California applications during the January 2025 Los Angeles wildfires, applying heightened risk analysis and revised property valuations to assess collateral integrity on fire-affected assets and inform credit decisions.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-date">Oct 2023 – May 2024</div>
+          <div class="timeline-company">Hands In Mud</div>
+          <div class="timeline-meta">Patna, India · Financial Operations</div>
+        </div>
+        <div class="timeline-content">
+          <h3>Analyst, Financial Operations</h3>
+          <p>Built five-year financial projections and operating models that senior leadership adopted to guide budgeting and investment prioritization across product lines.</p>
+          <p class="timeline-highlights">Led cost-structure analysis that cut annual operating expenses by roughly $8,000 (≈12%).</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-date">Sep 2022 – Aug 2023</div>
+          <div class="timeline-company">Gallagher &amp; Mohan</div>
+          <div class="timeline-meta">New Delhi, India · U.S. CRE · Lending &amp; PE Mandates</div>
+        </div>
+        <div class="timeline-content">
+          <h3>Financial Analyst, U.S. Commercial Real Estate</h3>
+          <p>Underwrote 120+ U.S. commercial real estate acquisitions (multifamily, industrial, warehouse, and commercial) for the PE sponsors, lenders, and REITs the firm serves across both lending and buy-side mandates. Built dynamic 10-year DCF models evaluating NOI, cap rates, DSCR, levered IRR, equity multiples, and going-in vs. exit cap spreads across multiple exit scenarios.</p>
+          <p class="timeline-highlights">Modeled investor distribution waterfalls and cash-on-cash returns across diversified CRE portfolios exceeding $100M in aggregate value, supporting equity-return analysis, scenario testing, and recommendations delivered to senior partners.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS AREAS -->
+<section id="focus" style="background: var(--cream);">
+  <div class="section-inner reveal">
+    <p class="section-tag">Areas of Focus</p>
+    <h2 class="section-title">The lenses I bring to real assets</h2>
+    <p class="section-desc">Three connected ways of looking at the same question: how value in real assets is created, financed, and repriced.</p>
+    <div class="focus-grid">
+      <div class="focus-card">
+        <div class="focus-icon">R</div>
+        <h3>Real Estate &amp; Real Assets</h3>
+        <p>Underwriting property cash flows from acquisition to exit: NOI, cap rates, DSCR, IRR, and the distribution waterfalls that decide who actually gets paid. How a deal pencils, not how it's pitched.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon">C</div>
+        <h3>Credit &amp; Collateral Risk</h3>
+        <p>Reading borrowers, collateral, and downside the way a lender does. From residential to commercial, I focus on what survives stress: default risk, recovery, and the integrity of the asset behind the loan.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon">I</div>
+        <h3>Rates &amp; Real-Asset Pricing</h3>
+        <p>How interest-rate regimes reprice REITs, infrastructure, and real estate. I build the regressions and valuation work to find where the market's rate lens misprices drawdown risk and growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner reveal">
+    <p class="section-tag">Projects</p>
+    <h2 class="section-title" style="color:var(--paper)">Selected work</h2>
+    <p class="section-desc">Centered on real estate, credit, and rate-driven real-asset research, with supporting range in quantitative analysis and equity research.</p>
+
+    <div class="projects-grid">
+
+      <h3 class="projects-subhead">Real Estate, Credit &amp; Real Assets
+        <span class="sub-note">Where my work is concentrated: original research and theses on how rates move real assets.</span>
+      </h3>
+
+      <!-- FLAGSHIP: REIT / INFRASTRUCTURE RATE SENSITIVITY -->
+      <div class="project-card flagship">
+        <span class="project-category">Quantitative Research · Real Assets</span>
+        <h3>Interest-Rate Sensitivity of REITs &amp; Infrastructure</h3>
+        <p>Python research using OLS and ARDL regressions across 93 monthly observations (Jan 2015–Mar 2026) to quantify the rate sensitivity of REIT and infrastructure ETF returns. Identified a post-2022 regime shift where rate betas ran 1.5–2.5× higher than full-sample estimates, then layered sector-level DCF and Gordon Growth valuations across five rate scenarios (FRED, yfinance) to flag mispriced drawdown risk.</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Regression</span>
+          <span class="project-tag">REITs</span>
+          <span class="project-tag">Rates</span>
+        </div>
+        <div class="project-links">
+          <a href="https://mdsaeedzaman.substack.com/p/when-the-fed-raised-rates-real-estate?r=72m8r5" target="_blank" class="project-link project-link-substack">Substack ↗</a>
+          <a href="https://colab.research.google.com/drive/1ix--CrTINfeYmrl6gJo51X9mYmnvU-4v" target="_blank" class="project-link project-link-colab">Colab Notebook ↗</a>
+        </div>
+      </div>
+
+      <!-- FLAGSHIP: DIGITAL REALTY LONG THESIS -->
+      <div class="project-card flagship">
+        <span class="project-category">Equity Research · Data-Center REITs</span>
+        <h3>Digital Realty (NYSE: DLR), Data-Center REIT Long Thesis</h3>
+        <p>Buy-side long thesis arguing that secular AI-capex demand and power-constrained supply drive an AFFO-growth and pricing-power story the market's rate-sensitivity lens underweights. Grounded in original regression showing data-center REITs behave anomalously versus the broader REIT complex, with valuation framed through DCF and AFFO-multiple analysis.</p>
+        <div class="project-tags">
+          <span class="project-tag">REIT</span>
+          <span class="project-tag">AFFO</span>
+          <span class="project-tag">AI Infrastructure</span>
+          <span class="project-tag">Long Thesis</span>
+        </div>
+        <span class="project-status status-wip">In Progress</span>
+      </div>
+
+      <h3 class="projects-subhead">Quantitative &amp; Modeling</h3>
+
+      <!-- RBSA -->
+      <div class="project-card">
+        <span class="project-category">Quantitative Finance</span>
+        <h3>Returns-Based Style Analysis (RBSA)</h3>
+        <p>Python project implementing RBSA to decompose portfolio returns into factor exposures, using constrained regression to map fund returns onto underlying asset-class benchmarks.</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Factor Analysis</span>
+          <span class="project-tag">Quant</span>
+        </div>
+        <div class="project-links">
+          <a href="rbsa.html" target="_blank" class="project-link project-link-drive">Model ↗</a>
+        </div>
+      </div>
+
+      <!-- LBO & DCF -->
+      <div class="project-card">
+        <span class="project-category">Financial Modeling</span>
+        <h3>LBO &amp; DCF Models</h3>
+        <p>Leveraged-buyout and DCF models covering debt scheduling, returns waterfalls, entry/exit multiples, and sensitivity tables for enterprise valuation across different capital structures.</p>
+        <div class="project-tags">
+          <span class="project-tag">LBO</span>
+          <span class="project-tag">DCF</span>
+          <span class="project-tag">Excel</span>
+        </div>
+        <span class="project-status status-wip">In Progress</span>
+      </div>
+
+      <h3 class="projects-subhead">Equity Research</h3>
+
+      <!-- CAVA -->
+      <div class="project-card">
+        <span class="project-category">Equity Research</span>
+        <h3>CAVA Group (NYSE: CAVA), BUY Thesis</h3>
+        <p>Equity research with a BUY recommendation. Covers the fast-casual tailwind, CAVA's unit economics approaching Chipotle-level returns, self-funded growth via 415+ stores, and a runway to 1,000+ locations, with public comps and EV/Revenue and EV/EBITDA valuation.</p>
+        <div class="project-tags">
+          <span class="project-tag">Valuation</span>
+          <span class="project-tag">Consumer</span>
+        </div>
+        <div class="project-links">
+          <a href="https://drive.google.com/file/d/1DoK_Wa3zBTQvmAtwygwsPwV7xSeox2wg/view?usp=sharing" target="_blank" class="project-link project-link-drive">Pitch Deck ↗</a>
+        </div>
+      </div>
+
+      <!-- ELI LILLY -->
+      <div class="project-card">
+        <span class="project-category">Equity Research</span>
+        <h3>Eli Lilly (NYSE: LLY), Short Thesis</h3>
+        <p>Bear case for Eli Lilly at 52x P/E. Analyzes Mounjaro/Zepbound concentration risk, the $7B Trulicity patent cliff, competition from Novo Nordisk and Amgen, GLP-1 regulatory and safety risk, insider selling, and oral-pipeline uncertainty.</p>
+        <div class="project-tags">
+          <span class="project-tag">Short Thesis</span>
+          <span class="project-tag">Healthcare</span>
+          <span class="project-tag">Risk Analysis</span>
+        </div>
+        <div class="project-links">
+          <a href="https://mdsaeedzaman.substack.com/p/eli-lilly-lly-short-thesis-overvalued?r=72m8r5" target="_blank" class="project-link project-link-substack">Substack ↗</a>
+        </div>
+      </div>
+
+      <!-- MSFT -->
+      <div class="project-card">
+        <span class="project-category">Equity Research</span>
+        <h3>Microsoft (NASDAQ: MSFT), Equity Research Model</h3>
+        <p>Model with full income-statement capture (FY2023–FY2026), segment-level analysis, and a detailed DCF valuation with multi-scenario operating assumptions, built in Excel with structured financial-statement modeling.</p>
+        <div class="project-tags">
+          <span class="project-tag">DCF</span>
+          <span class="project-tag">Financial Modeling</span>
+          <span class="project-tag">Technology</span>
+        </div>
+        <div class="project-links">
+          <a href="https://mdsaeedzaman.substack.com/p/microsoft-corporation-msft-equity?r=72m8r5" target="_blank" class="project-link project-link-substack">Substack ↗</a>
+          <a href="https://docs.google.com/spreadsheets/d/1UyIIx3tW8ic4NYhNlzKBwYXre7ehChK3/edit?usp=sharing&ouid=100528087195645238009&rtpof=true&sd=true" target="_blank" class="project-link project-link-drive">Excel Model ↗</a>
+        </div>
+      </div>
+
+      <h3 class="projects-subhead">Case Studies &amp; Diligence</h3>
+
+      <!-- SPB CASE COMPETITION -->
+      <div class="project-card">
+        <span class="project-category">Financial Consulting</span>
+        <h3>Simon Private Bank Case Competition</h3>
+        <p>5-year growth and transformation strategy for a global private wealth manager facing a generational shift, margin crisis, and talent departure. Built the financial model with scenario analysis across four stress cases.</p>
+        <div class="project-tags">
+          <span class="project-tag">Case Comp</span>
+          <span class="project-tag">Financial Modeling</span>
+          <span class="project-tag">Wealth Management</span>
+        </div>
+        <div class="project-links">
+          <a href="spb_portfolio.html" target="_blank" class="project-link project-link-substack">Full Case ↗</a>
+        </div>
+      </div>
+
+      <!-- ENERGY DUE DILIGENCE -->
+      <div class="project-card">
+        <span class="project-category">Diligence · Real Assets</span>
+        <h3>Energy Startup Due Diligence Report</h3>
+        <p>Diligence on an energy-sector startup: market sizing, competitive landscape, regulatory environment, unit economics, and investment-thesis framing for the energy-transition space.</p>
+        <div class="project-tags">
+          <span class="project-tag">Due Diligence</span>
+          <span class="project-tag">Energy</span>
+          <span class="project-tag">Real Assets</span>
+        </div>
+        <span class="project-status status-wip">In Progress</span>
+      </div>
+
+      <!--
+      ════════════════════════════════════════════════════════════
+       HOW TO ADD A NEW PROJECT: just copy, paste, and fill in.
+       Add "flagship" to the class (class="project-card flagship")
+       to give an on-theme RE/credit card the highlighted border.
+      ════════════════════════════════════════════════════════════
+
+      <div class="project-card">
+        <span class="project-category">CATEGORY</span>
+        <h3>PROJECT TITLE</h3>
+        <p>Brief description of the project.</p>
+        <div class="project-tags">
+          <span class="project-tag">TAG 1</span>
+          <span class="project-tag">TAG 2</span>
+        </div>
+        <div class="project-links">
+          <a href="SUBSTACK_LINK" target="_blank" class="project-link project-link-substack">Substack ↗</a>
+          <a href="DRIVE_LINK" target="_blank" class="project-link project-link-drive">Slides ↗</a>
+          <a href="COLAB_LINK" target="_blank" class="project-link project-link-colab">Notebook ↗</a>
+        </div>
+      </div>
+
+      -->
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner reveal">
+    <p class="section-tag">Get in Touch</p>
+    <h2 class="section-title">Let's connect</h2>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-text">Whether you'd like to talk real estate, credit, and how rates are repricing real assets, or about a role, I'd like to hear from you. Based in the U.S. and open to opportunities.</p>
+        <div class="contact-links">
+          <a href="mailto:saeedzaman.work@gmail.com" class="contact-link">
+            <span class="contact-link-label">Email</span>
+            saeedzaman.work@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/mdsaeedzaman" target="_blank" class="contact-link">
+            <span class="contact-link-label">LinkedIn</span>
+            linkedin.com/in/mdsaeedzaman ↗
+          </a>
+          <a href="https://mdsaeedzaman.substack.com" target="_blank" class="contact-link">
+            <span class="contact-link-label">Substack</span>
+            mdsaeedzaman.substack.com ↗
+          </a>
+          <a href="https://drive.google.com/file/d/1JT-ZzXmWHpP0ETeI71ub2xXRCC9KGXQz/view?usp=drive_link" target="_blank" class="contact-link">
+            <span class="contact-link-label">Resume</span>
+            Download PDF ↗
+          </a>
+          <a href="tel:+15852691780" class="contact-link">
+            <span class="contact-link-label">Phone</span>
+            (585) 269-1780
+          </a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">&copy; 2026 Md Saeed Zaman</span>
+    <div class="footer-links">
+      <a href="#hero">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+  });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
