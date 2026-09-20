@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Realty (NYSE: DLR) | Equity Research | Md Saeed Zaman</title>
+  <meta name="description" content="Independent equity research on Digital Realty Trust (NYSE: DLR). LONG, $213 target, 18.3% total return. Full deck, a self-built 14-tab valuation model, and the written thesis by Md Saeed Zaman.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --ink: #1a1a18; --paper: #f5f1eb; --cream: #ece6db; --warm: #d4c9b8;
+      --accent: #8b6914; --accent-light: #c4a44a; --muted: #7a746a; --pos: #4a6b3a;
+      --serif: 'DM Serif Display', Georgia, serif; --sans: 'DM Sans', -apple-system, sans-serif;
+      --max-w: 1080px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.7; font-weight: 300; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent-light); color: var(--ink); }
+    a { color: inherit; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(245,241,235,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(26,26,24,0.06); }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-family: var(--serif); font-size: 1.15rem; text-decoration: none; }
+    .nav-back { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); text-decoration: none; transition: color 0.25s; }
+    .nav-back:hover { color: var(--ink); }
+
+    .hero { padding: 9rem 2rem 3.5rem; border-bottom: 1px solid rgba(26,26,24,0.08); }
+    .hero-inner { max-width: var(--max-w); margin: 0 auto; }
+    .hero-eyebrow { font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 1.5rem; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(2.3rem, 5.5vw, 3.7rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.6rem; }
+    .hero h1 .ticker { color: var(--accent); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 700px; margin-bottom: 2.5rem; }
+    .hero-sub strong { color: var(--ink); font-weight: 500; }
+    .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; background: rgba(26,26,24,0.08); border: 1px solid rgba(26,26,24,0.08); }
+    .stat { background: var(--cream); padding: 1.4rem 1.4rem; }
+    .stat-label { font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.5rem; }
+    .stat-value { font-family: var(--serif); font-size: 1.5rem; line-height: 1; }
+    .stat-value.buy { color: var(--accent); }
+    .stat-value.pos { color: var(--pos); }
+
+    section.block { padding: 4.5rem 2rem; }
+    .block-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-tag { font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 1rem; }
+    .section-title { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.2; margin-bottom: 1.2rem; }
+    .lead { font-size: 1rem; color: var(--muted); max-width: 700px; }
+
+    /* THESIS PARAGRAPH */
+    #thesis { background: var(--ink); color: var(--paper); }
+    #thesis .section-tag { color: var(--accent-light); }
+    .thesis-para { font-family: var(--serif); font-size: clamp(1.15rem, 2vw, 1.5rem); line-height: 1.5; max-width: 900px; margin-top: 1.5rem; color: rgba(245,241,235,0.92); }
+    .thesis-para strong { color: var(--accent-light); font-weight: 400; }
+    .thesis-kicker { margin-top: 1.8rem; font-family: var(--sans); font-size: 1rem; color: var(--paper); font-weight: 400; }
+
+    /* DELIVERABLES */
+    #deliverables { background: var(--cream); }
+    .files-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .file-card { background: var(--paper); border: 1px solid rgba(26,26,24,0.1); padding: 2rem 1.8rem; display: flex; flex-direction: column; transition: border-color 0.3s, transform 0.3s; }
+    .file-card:hover { border-color: var(--accent-light); transform: translateY(-3px); }
+    .file-kind { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 0.9rem; }
+    .file-card h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.6rem; line-height: 1.3; }
+    .file-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; flex: 1; margin-bottom: 1.4rem; }
+    .file-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .file-btn { font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.5rem 0.95rem; text-decoration: none; transition: all 0.25s; display: inline-flex; align-items: center; gap: 0.35rem; }
+    .file-btn.primary { background: var(--ink); color: var(--paper); }
+    .file-btn.primary:hover { background: var(--accent); }
+    .file-btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--warm); }
+    .file-btn.ghost:hover { border-color: var(--ink); }
+    .file-card.soon { opacity: 0.7; }
+    .badge-soon { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); border: 1px solid var(--warm); padding: 0.35rem 0.7rem; align-self: flex-start; }
+
+    /* PILLARS */
+    .pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 2.5rem; background: rgba(26,26,24,0.08); border: 1px solid rgba(26,26,24,0.08); }
+    .pillar { background: var(--paper); padding: 2.2rem 2rem; }
+    .pillar-num { font-family: var(--serif); font-size: 0.85rem; color: var(--accent); margin-bottom: 0.7rem; }
+    .pillar h3 { font-family: var(--serif); font-size: 1.2rem; line-height: 1.3; margin-bottom: 0.8rem; }
+    .pillar p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; }
+    .pillar .metric { display: block; margin-top: 1rem; font-size: 0.82rem; color: var(--ink); border-left: 2px solid var(--accent-light); padding-left: 0.8rem; line-height: 1.6; }
+
+    /* MISPRICED */
+    #mispriced { background: var(--cream); }
+    .mp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 3rem; margin-top: 2.5rem; }
+    .mp-item { border-top: 2px solid var(--accent); padding-top: 1.1rem; }
+    .mp-item h3 { font-family: var(--serif); font-size: 1.08rem; line-height: 1.3; margin-bottom: 0.6rem; }
+    .mp-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+    /* VALUATION */
+    #valuation { background: var(--ink); color: var(--paper); }
+    #valuation .section-tag { color: var(--accent-light); }
+    #valuation .lead { color: rgba(245,241,235,0.55); }
+    .val-table { width: 100%; border-collapse: collapse; margin-top: 2.5rem; font-size: 0.9rem; }
+    .val-table th { text-align: left; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.66rem; color: var(--accent-light); padding: 0.9rem 1rem; border-bottom: 1px solid rgba(245,241,235,0.18); }
+    .val-table td { padding: 0.9rem 1rem; border-bottom: 1px solid rgba(245,241,235,0.08); color: rgba(245,241,235,0.72); vertical-align: top; }
+    .val-table td:first-child { color: var(--paper); }
+    .val-table td.pt { font-family: var(--serif); color: var(--paper); }
+    .val-table tr.total td { font-family: var(--serif); font-size: 1.05rem; color: var(--paper); border-bottom: none; border-top: 1px solid rgba(196,164,74,0.4); }
+    .val-notes { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 3rem; }
+    .val-note h3 { font-family: var(--serif); font-size: 1.1rem; color: var(--paper); margin-bottom: 0.6rem; }
+    .val-note p { font-size: 0.88rem; color: rgba(245,241,235,0.6); line-height: 1.7; }
+    .val-source { font-size: 0.76rem; color: rgba(245,241,235,0.38); margin-top: 2rem; line-height: 1.6; }
+
+    /* DECK */
+    #deck { background: var(--cream); }
+    .deck-frame { margin-top: 2.5rem; border: 1px solid rgba(26,26,24,0.15); background: var(--ink); aspect-ratio: 16 / 9; width: 100%; }
+    .deck-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .deck-fallback { margin-top: 1rem; font-size: 0.82rem; color: var(--muted); }
+    .deck-fallback a { color: var(--accent); }
+
+    /* RISKS */
+    .risk-list { margin-top: 2.5rem; }
+    .risk-row { display: grid; grid-template-columns: 260px 1fr; gap: 2.5rem; padding: 1.5rem 0; border-top: 1px solid rgba(26,26,24,0.1); }
+    .risk-row h3 { font-family: var(--serif); font-size: 1.02rem; line-height: 1.35; }
+    .risk-row .mit { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+    .breaks { margin-top: 2.5rem; padding: 1.6rem 1.8rem; background: var(--cream); border-left: 3px solid var(--accent); font-size: 0.92rem; line-height: 1.75; }
+    .breaks strong { font-weight: 500; }
+
+    /* CATALYSTS + APPROACH */
+    #closing { background: var(--cream); }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; margin-top: 2.5rem; }
+    .two-col h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 1rem; }
+    .two-col p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; margin-bottom: 1rem; }
+    .cat-list { list-style: none; }
+    .cat-list li { font-size: 0.9rem; color: var(--muted); line-height: 1.55; padding: 0.7rem 0 0.7rem 2rem; position: relative; border-bottom: 1px solid rgba(26,26,24,0.06); }
+    .cat-list li b { color: var(--ink); font-weight: 500; }
+    .cat-list li .n { position: absolute; left: 0; top: 0.7rem; font-family: var(--serif); font-size: 0.85rem; color: var(--accent); }
+
+    footer { padding: 3rem 2rem; background: var(--ink); color: rgba(245,241,235,0.6); }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .disclaimer { font-size: 0.72rem; color: rgba(245,241,235,0.4); max-width: 640px; line-height: 1.6; }
+    .footer-inner a { color: var(--accent-light); text-decoration: none; font-size: 0.82rem; }
+
+    @media (max-width: 900px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .pillars, .mp-grid, .val-notes, .two-col { grid-template-columns: 1fr; }
+      .risk-row { grid-template-columns: 1fr; gap: 0.5rem; }
+      section.block { padding: 3.5rem 1.5rem; }
+      .hero { padding: 8rem 1.5rem 3rem; }
+    }
+    @media (max-width: 520px) { .stats { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Saeed Zaman</a>
+    <a href="index.html#projects" class="nav-back">← Back to portfolio</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Equity Research · Initiation · Data-Center REITs</p>
+    <h1>Digital Realty Trust <span class="ticker">(NYSE: DLR)</span></h1>
+    <p class="hero-sub">An independent initiation on the largest pure-play data-center REIT. The one-line case: <strong>the market is pricing DLR on demand risk, but the binding constraint is supply</strong>, and DLR spent a decade securing the land, grid capacity, and permits that competitors cannot replicate on a three-to-five-year view.</p>
+    <div class="stats">
+      <div class="stat"><div class="stat-label">Rating</div><div class="stat-value buy">LONG</div></div>
+      <div class="stat"><div class="stat-label">Price (18 Sep 26)</div><div class="stat-value">$184.26</div></div>
+      <div class="stat"><div class="stat-label">Target</div><div class="stat-value">$213</div></div>
+      <div class="stat"><div class="stat-label">Total Return</div><div class="stat-value pos">+18.3%</div></div>
+      <div class="stat"><div class="stat-label">Reward / Risk</div><div class="stat-value">3.6x</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- THESIS IN ONE PARAGRAPH -->
+<section class="block" id="thesis">
+  <div class="block-inner">
+    <p class="section-tag">The Thesis in One Paragraph</p>
+    <p class="thesis-para">The market prices Digital Realty on <strong>demand risk</strong> in an AI-capex cycle it does not trust. But the binding constraint in data centers is not demand, it is <strong>deployable capacity</strong>: land with grid position, energized on a customer's timeline, funded without wrecking the balance sheet. DLR is one of a very small number of operators that has pre-positioned all three at once, and it is converting that scarcity into pricing power on both new and renewal leases.</p>
+    <p class="thesis-kicker">Two sources of earnings power sit largely outside consensus numbers: a 25%+ cash mark-to-market embedded in the lease-expiration schedule, and a private-capital fee and promote stream management explicitly excludes from its own guidance. The stock fell 5% since early August while the sell side raised targets and management raised guidance for the second time this year. We are being paid to own compounding that has already been contracted.</p>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="block" id="deliverables">
+  <div class="block-inner">
+    <p class="section-tag">The Material</p>
+    <h2 class="section-title">The research package</h2>
+    <p class="lead">The written thesis, valuation, and risks are laid out on this page. The deck and the model behind every number are here to open.</p>
+    <div class="files-grid">
+      <div class="file-card">
+        <div class="file-kind">Pitch Deck · 11 slides</div>
+        <h3>Equity Research Deck</h3>
+        <p>The full initiation: business, recommendation, the pillars, earnings visibility, the valuation football field, risks, and catalysts.</p>
+        <div class="file-actions">
+          <a href="#deck" class="file-btn primary">View ↓</a>
+          <a href="DLR_Equity_Pitch.pdf" target="_blank" class="file-btn ghost">PDF ↗</a>
+          <a href="DLR_Equity_Pitch.pptx" download class="file-btn ghost">PPTX ↓</a>
+        </div>
+      </div>
+      <div class="file-card">
+        <div class="file-kind">Valuation Model · Excel</div>
+        <h3>DLR Valuation Model</h3>
+        <p>14-tab model I built from the filings up: revenue build, FFO / AFFO bridges, development capex, debt schedule, DCF, NAV / SOTP, comps, and a bear-to-bull scenario engine driving the weighted target.</p>
+        <div class="file-actions">
+          <a href="DLR_Valuation_Model.xlsx" download class="file-btn primary">Excel ↓</a>
+        </div>
+      </div>
+      <div class="file-card soon">
+        <div class="file-kind">Video · Coming soon</div>
+        <h3>Recorded Walkthrough</h3>
+        <p>A short presentation walking through the thesis and the model live. In production. Check back shortly.</p>
+        <span class="badge-soon">In progress</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUR PILLARS -->
+<section class="block">
+  <div class="block-inner">
+    <p class="section-tag">The Case</p>
+    <h2 class="section-title">Four pillars</h2>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">Pillar One</div>
+        <h3>Supply scarcity, not demand abundance</h3>
+        <p>DLR controls the constrained input: roughly 3 GW of in-place capacity and 9 GW of future development, of which 1,402 MW is already under construction and 7 GW+ is land and shell. Charlotte proves execution, not land-banking, going from announcement to 200 MW leased in under 18 months at 94% pre-leasing. Kansas City (Astra, 1,440 acres) provisions 600 MW by 2028; Atlanta adds an 873-acre, 1 GW campus.</p>
+        <span class="metric">1,402 MW under construction · up 82% in six months · 11.5% blended stabilized yield · non-replicable on a 3-5 year view</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">Pillar Two</div>
+        <h3>Pricing power, proven on the renewal book</h3>
+        <p>Leases signed years ago are expiring into a far tighter market, and nothing has to be built for it to show up in revenue. Q2-26 cash renewal spreads hit a record +25.6%, with greater-than-1 MW spreads at +66.7% as leases signed at $159/kW renewed at $265/kW. Management then raised full-year 2026 renewal-spread guidance, signalling the quarter was not an anomaly.</p>
+        <span class="metric">Guidance lifted to 9.0-11.0% · ~4-year average lease term, so the book reprices quickly · 1.1% quarterly churn</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">Pillar Three</div>
+        <h3>Growth on top of growth: the capital flywheel</h3>
+        <p>In 2026 alone, DLR bought out the remaining 64% of the Blackstone JVs (harvesting $188M of net promote), took Teraco from 61% to 77%, and acquired Columbia Capital ($485M, $9B of committed capital across 16 vehicles). Each deal either adds power-adjacent land or expands the capital base that funds it.</p>
+        <span class="metric">Every deal adds energized land or fee-earning capital, at a known basis</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">Pillar Four</div>
+        <h3>A private-capital platform: the asset-light engine</h3>
+        <p>Fee income went from 0.86% of revenue in FY23 to 2.35% in FY25, tripling in dollars to $144M (roughly $190M run-rate excluding promotes). With a $3.25B U.S. Hyperscale Fund, an $8B development JV, and Columbia's $9B, DLR has $10B+ of private-capital dry powder and monetizes the same land bank twice: once as owned NOI, once as fees on capital it does not own.</p>
+        <span class="metric">Fee income tripled to $144M · $10B+ dry powder · worth $7.57 / share in NAV that consensus gets for free</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY MISPRICED -->
+<section class="block" id="mispriced">
+  <div class="block-inner">
+    <p class="section-tag">Variant Perception</p>
+    <h2 class="section-title">Why it is mispriced</h2>
+    <div class="mp-grid">
+      <div class="mp-item">
+        <h3>Consensus underwrites demand risk; the real question is supply</h3>
+        <p>Peers with capital but no energized land cannot convert AI demand into revenue. DLR's constraint is capital allocation, not access to customers, which is a far better problem to have.</p>
+      </div>
+      <div class="mp-item">
+        <h3>The fee and promote stream is excluded from guidance by construction</h3>
+        <p>DLR guides Core FFO ex-net-promote. Investors capitalizing $8.15 to $8.20 at a REIT multiple are getting the asset-management economics for free. It is the core of the sum-of-the-parts argument, worth $7.57 / share in our NAV.</p>
+      </div>
+      <div class="mp-item">
+        <h3>The market misread the June 30 Blackstone buy-in</h3>
+        <p>The stock fell 5% on a deal that harvested $188M of net promote and consolidated three fully-leased Northern Virginia assets (288 MW, $7.8B gross, above a 6.5% cap rate) DLR already operated. Punished as dilution; better read as vertical integration at a known basis.</p>
+      </div>
+      <div class="mp-item">
+        <h3>Two guidance raises have not been paid for</h3>
+        <p>2026 Core FFO guidance walked from $7.90-$8.00 to $8.15-$8.20, yet the stock trades below where it sat in April. The multiple compressed from 23.7x to 22.5x on rising estimates.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUATION -->
+<section class="block" id="valuation">
+  <div class="block-inner">
+    <p class="section-tag">Valuation</p>
+    <h2 class="section-title">Four methods, weighted</h2>
+    <p class="lead">Net asset value carries the most weight because this is a property balance sheet. The target is the weighted output of the model, not a single multiple.</p>
+    <table class="val-table">
+      <thead>
+        <tr><th>Method</th><th>Weight</th><th>Output</th><th>Key assumption</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>NAV / sum-of-the-parts</td><td>40%</td><td class="pt">$218</td><td>5.5% cap rate on $4.28B stabilized cash NOI (range $195 at 6.0% to $244 at 5.0%)</td></tr>
+        <tr><td>Discounted cash flow</td><td>30%</td><td class="pt">$224</td><td>8.0% WACC, 23x exit EBITDA, 10-year explicit horizon</td></tr>
+        <tr><td>Price / FY27E Core FFO</td><td>20%</td><td class="pt">$204</td><td>21x to 25x on $8.86</td></tr>
+        <tr><td>Price / FY27E AFFO ex-promote</td><td>10%</td><td class="pt">$184</td><td>22x to 26x on $7.65</td></tr>
+        <tr class="total"><td>Weighted target</td><td></td><td class="pt">$213</td><td>Current $184.26 · bear $163 / base $221 / bull $263</td></tr>
+      </tbody>
+    </table>
+    <div class="val-notes">
+      <div class="val-note">
+        <h3>The $32 / share of development value is the thesis in one number</h3>
+        <p>DLR builds at an 11.5% stabilized yield, and that NOI capitalizes at 5.5%. That roughly 600bp spread, not AI demand, is what creates equity value, and every megawatt delivered widens it. The mark is deliberately conservative: at zero value for the land bank, NAV is still $208.</p>
+      </div>
+      <div class="val-note">
+        <h3>A compounder, not a re-rating trade</h3>
+        <p>The 12-month upside is real, but the stronger case is duration. FY29E Core FFO of $11.15 at today's unchanged 22.5x is $251, plus $15 of dividends: a 44% total return over three years, roughly a 13% IRR with no multiple re-rating at all.</p>
+      </div>
+      <div class="val-note">
+        <h3>Why we sit below the street</h3>
+        <p>Consensus is $223.48 across 33 analysts; we sit about $10 below, almost entirely on the discount rate. We use an 8.0% WACC against Wells Fargo at 6.0% and J.P. Morgan at 7.0%. Each 50bp is worth roughly $5 / share, and we prefer the conservative input with the Fed signalling possible hikes.</p>
+      </div>
+      <div class="val-note">
+        <h3>Where NAV sits</h3>
+        <p>Stabilized portfolio $206.71, plus $31.78 of value created on the 1,402 MW under construction over full cost, $9.44 land and power bank, and $7.57 for the private-capital platform, less liabilities. Point estimate $217.70 at a 5.5% cap rate.</p>
+      </div>
+    </div>
+    <p class="val-source">Street targets (Aug-26): Evercore $240, HSBC $240, Deutsche Bank $229, RBC $227, Cantor $221, Wells Fargo $220. Sources: DLR SEC filings and Q2-26 disclosures; all model outputs from the valuation workbook; estimates are the author's own.</p>
+  </div>
+</section>
+
+<!-- DECK EMBED -->
+<section class="block" id="deck">
+  <div class="block-inner">
+    <p class="section-tag">The Deck</p>
+    <h2 class="section-title">Read it here</h2>
+    <div class="deck-frame">
+      <iframe src="DLR_Equity_Pitch.pdf#view=FitH" title="DLR Equity Research Deck"></iframe>
+    </div>
+    <p class="deck-fallback">Not loading? <a href="DLR_Equity_Pitch.pdf" target="_blank">Open the PDF in a new tab ↗</a> or <a href="DLR_Equity_Pitch.pptx" download>download the PowerPoint ↓</a></p>
+  </div>
+</section>
+
+<!-- RISKS -->
+<section class="block">
+  <div class="block-inner">
+    <p class="section-tag">Key Risks &amp; Mitigants</p>
+    <h2 class="section-title">The other side of the trade</h2>
+    <div class="risk-list">
+      <div class="risk-row">
+        <h3>Valuation vs. peers</h3>
+        <div class="mit">DLR trades at 24.1x FY27E AFFO against Equinix at 21.4x, a 13% premium, with 4.8x leverage against 3.5x. Offsets are faster revenue growth (14.8% vs 11.5%), higher EBITDA margin, and a higher yield. This is the hardest number in the pitch to defend, and it belongs on the table.</div>
+      </div>
+      <div class="risk-row">
+        <h3>The Chanos short case</h3>
+        <div class="mit">The bear argument is that data centers are depreciating tech assets, not real estate, and that FFO flatters the economics. The answer is AFFO, not FFO: FY26E AFFO payout ex-promote is 68.4%, falling to 52.7% by FY30, with recurring capex modeled explicitly and Q4-weighted.</div>
+      </div>
+      <div class="risk-row">
+        <h3>Customer concentration</h3>
+        <div class="mit">Top three tenants are 26% of recurring revenue, up from 21% in 2023, with Oracle ARR up 59% in a year to 9.0%. Mitigated by long weighted-average lease terms on the top two (9.4 and 10.2 years) and low churn, but the Oracle credit scenario is sized explicitly.</div>
+      </div>
+      <div class="risk-row">
+        <h3>Dilution</h3>
+        <div class="mit">Share count rose 7.7% in six months. The test is per-share, not absolute: the model carries 8.5% share growth to FY30 against Core FFO per share compounding from $8.20 to $11.85, with leverage peaking at 5.0x then falling to 4.0x.</div>
+      </div>
+      <div class="risk-row">
+        <h3>Speculative build</h3>
+        <div class="mit">Blended pre-leasing is 54%. But look at where the unleased capacity sits: more than half is Atlanta (1Q29) and EMEA at 12%. The Americas excluding Atlanta are 75% pre-leased, so EMEA is the nearer-dated concern.</div>
+      </div>
+    </div>
+    <div class="breaks">
+      <strong>What breaks the thesis:</strong> backlog conversion slipping materially; development yields compressing below roughly 9%; pre-leasing on new starts falling below roughly 40%; a top-three customer credit event; or equity issuance outpacing per-share FFO growth for two consecutive quarters.
+    </div>
+  </div>
+</section>
+
+<!-- CATALYSTS + APPROACH -->
+<section class="block" id="closing">
+  <div class="block-inner">
+    <p class="section-tag">What to Watch &amp; How It Was Built</p>
+    <h2 class="section-title">Catalysts and approach</h2>
+    <div class="two-col">
+      <div>
+        <h3>Catalysts</h3>
+        <ul class="cat-list">
+          <li><span class="n">1</span><b>Q3-26 earnings (late Oct).</b> A fourth consecutive guidance raise; conversion of the $410M July hyperscale signings.</li>
+          <li><span class="n">2</span><b>Backlog commencement.</b> $635M in 2H26, $480M in 2027, contracted and disclosed by period, so near-mechanical revenue.</li>
+          <li><span class="n">3</span><b>Renewal spreads sustaining 20%+.</b> Validates the embedded mark-to-market and the pricing-power pillar.</li>
+          <li><span class="n">4</span><b>Kansas City / Atlanta pre-leasing.</b> Converts the land bank into contracted NOI.</li>
+          <li><span class="n">5</span><b>2027 guidance (Feb 2027).</b> A third straight double-digit year should re-rate the multiple.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>How I built it</h3>
+        <p>Starting from a historical foundation pulled straight from the FY25 10-K and Q2-26 supplement, I built the forward engine myself: the revenue build off the signed-but-not-commenced backlog, the FFO / Core FFO / AFFO bridges, development capex and the debt schedule, then the DCF, NAV, comps, and a bear-to-bull scenario layer that drives the weighted target live.</p>
+        <p>Every projection cell traces to a source or an assumption I can defend. No black boxes, and the caveats (terminal-value concentration in the DCF, the peer premium) are raised in the work rather than buried.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="disclaimer">Independent equity research prepared by Md Saeed Zaman for educational and illustrative purposes. Not investment advice and not a recommendation to buy or sell any security. Prices and estimates as of 18 September 2026. Sources: DLR SEC filings and company disclosures; all estimates are the author's own.</p>
+    <a href="index.html#projects">← Back to portfolio</a>
+  </div>
+</footer>
+
+</body>
+</html>
